@@ -1,0 +1,20 @@
+--- # Start
+# 20230.07.01 change port
+server:
+  port: 8888
+
+---
+# MySql DB
+spring:
+  datasource:
+    #  mysql: => ***** 여기 라인이 들어 가면 절대 안 됨: 에러 발생: 들여쓰기는 상관이 없네 *****
+    # 2023.07.21 Conclusion. 여기서 에러나면, cmd/services.msc/MySQL/RB:시작 =====> 구동시켜야 된다.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/powerppsc?serverTimezone=UTC&characterEncoding=UTF-8
+    username: "sa"
+    password: "*963210z" # 비밀 번호가 [특수 문자]로 시작할 때는 반드시 따옴표로 묶어줘야 한다.
+    # 여기 따옴표도 에러 남: url: jdbc:mysql://localhost:3306/"powerppsc"?serverTimezone=UTC&characterEncoding=UTF-8
+    => 여기 {중괄호} 에러 남: # username: {"sa"}
+  => 여기 "큰 따옴표 문제 없음": # password: "*963210z" # 비밀 번호가 [특수 문자]로 시작할 때는 반드시 따옴표로 묶어줘야 한다.
+  # 2023.07.21 Conclusion. 여기서 에러나면, cmd/services.msc/MySQL/RB:시작 =====> 구동시켜야 된다.
+
