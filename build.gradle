@@ -30,6 +30,27 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// 2023.07.30 Added. token.토큰 발행 관리를 위함.
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// 2023.07.27 Added. 필수 파라메터 지정을 위한.
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// => 서버를 다시 실행하면, 아래와 같은 메시지가 뿌려지면서, 서버는 정상 작동되나,
+	// postman: https://web.postman.co/workspace/My-Workspace~255027b6-9051-4b3b-8829-99c63831bf0f/request/14047405-9e3a2d71-3971-43e2-bee9-46c8dcbbbcd8
+	// 에서 localhost:8000/api/auth/sighIn 하게 되면, 정상적으로 로그인 처리가 되지 않는다. 401 Unauthorized 에러 !!!
+	// Using generated secutiry password: d8d54141-1aa8-4987-9692-f8f2ee7f3cdf
+	// This generated password is for development use only. Your security configuration must be updated before running your application  in production
+	// => 계속해서,
+	// /filter 패키를 만들고, JwtAuthenticationFilter.java 파일과,
+	// /config 패키지를 만들고, WebSecurityConfig.java 파일을 잘 작성해 주고, postman을 실행하면, 정상적으로 로그인 된다.
+
+	// 2023.07.28 Added. JWC(JSON Web Token) 주입.
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	implementation 'io.jsonwebtoken:jjwt:0.9.1' // 여기랑 아래 group: 처리랑 동일.
+	//implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
 }
 
 tasks.named('test') {
