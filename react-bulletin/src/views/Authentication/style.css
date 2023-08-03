@@ -1,0 +1,19 @@
+#Card {
+    border: 5px solid green;
+    margin: 10px;
+}
+
+#main {
+    min-width: 275px;
+    max-width: 99vh;
+}
+
+#items {
+    height: 50vh;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
